@@ -62,7 +62,7 @@ struct MovieListView: View {
 #Preview {
     NavigationStack {
         MovieListView()
-            .modelContainer(SampleData.shared.modelContainer)
+            .modelContainer(PreviewData.shared.modelContainer)
     }
 }
 
@@ -70,7 +70,7 @@ struct MovieListView: View {
 #Preview("Filtered") {
     NavigationStack {
         MovieListView(titleFilter: "nemo")
-            .modelContainer(SampleData.shared.modelContainer)
+            .modelContainer(PreviewData.shared.modelContainer)
     }
 }
 

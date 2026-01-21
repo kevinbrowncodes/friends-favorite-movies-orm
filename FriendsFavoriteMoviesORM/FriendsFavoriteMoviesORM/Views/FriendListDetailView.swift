@@ -51,14 +51,14 @@ struct FriendListDetailView : View {
 
 #Preview {
     NavigationStack {
-        FriendListDetailView(friend: SampleData.shared.friend)
+        FriendListDetailView(friend: PreviewData.shared.friend)
     }
-    .modelContainer(SampleData.shared.modelContainer)
+    .modelContainer(PreviewData.shared.modelContainer)
 }
 
 #Preview("New Friend") {
     NavigationStack {
-        FriendListDetailView(friend: SampleData.shared.friend, isNew: true)
+        FriendListDetailView(friend: PreviewData.shared.friend, isNew: true)
     }
-    .modelContainer(SampleData.shared.modelContainer)
+    .modelContainer(PreviewData.shared.modelContainer)
 }

@@ -14,5 +14,5 @@ struct MovieListFilteredView: View {
 
 #Preview {
     MovieListFilteredView()
-        .modelContainer(SampleData.shared.modelContainer)
+        .modelContainer(PreviewData.shared.modelContainer)
 }

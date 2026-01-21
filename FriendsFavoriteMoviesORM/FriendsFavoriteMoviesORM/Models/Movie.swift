@@ -12,11 +12,26 @@ class Movie {
         self.releaseDate = releaseDate
     }
     
-    static let sampleData = [
-        Movie(title: "Lion King", releaseDate: Date(timeIntervalSinceReferenceDate: -20_822_400)),
-        Movie(title: "Hercules", releaseDate: Date(timeIntervalSinceReferenceDate: 182_995_200)),
-        Movie(title: "Wall-E", releaseDate: Date(timeIntervalSinceReferenceDate: -177_033_600)),
-        Movie(title: "Toy Story", releaseDate: Date(timeIntervalSinceReferenceDate: 409_622_400)),
-        Movie(title: "Finding Nemo", releaseDate: Date(timeIntervalSinceReferenceDate: 649_296_000))
-    ]
+    static func loadFromBundle() -> [Movie] {
+        guard let url = Bundle.main.url(forResource: "Movies", withExtension: "json"),
+              let data = try? Data(contentsOf: url) else {
+            print("Failed to locate Movies.json in bundle")
+            return []
+        }
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
+        struct MovieData: Codable {
+            let title: String
+            let releaseDate: Date
+        }
+        
+        guard let movieData = try? decoder.decode([MovieData].self, from: data) else {
+            print("Failed to decode Movies.json")
+            return []
+        }
+        
+        return movieData.map { Movie(title: $0.title, releaseDate: $0.releaseDate) }
+    }
 }

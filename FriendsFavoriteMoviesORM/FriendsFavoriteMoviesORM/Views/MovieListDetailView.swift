@@ -54,12 +54,12 @@ struct MovieDetailView : View {
 
 #Preview {
     NavigationStack {
-        MovieDetailView(movie: SampleData.shared.movie)
+        MovieDetailView(movie: PreviewData.shared.movie)
     }
 }
 
 #Preview("New Movie") {
     NavigationStack {
-        MovieDetailView(movie: SampleData.shared.movie, isNew: true)
+        MovieDetailView(movie: PreviewData.shared.movie, isNew: true)
     }
 }
